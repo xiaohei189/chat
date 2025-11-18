@@ -9,7 +9,6 @@
             "program": "${workspaceFolder}/cmd/api/chat-api",
             "cwd": "${workspaceFolder}",
             "env": {
-                "CHATENV_MONGODB_ADDRESS": "mongodb://openIM:openIM123@127.0.0.1:27017/openim_v3?maxPoolSize=100",
                 "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
                 "CHATENV_REDIS_PASSWORD": "openIM123",
                 "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
@@ -33,7 +32,91 @@
             "program": "${workspaceFolder}/cmd/api/admin-api",
             "cwd": "${workspaceFolder}",
             "env": {
-                "CHATENV_MONGODB_ADDRESS": "mongodb://openIM:openIM123@127.0.0.1:27017/openim_v3?maxPoolSize=100",
+                "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
+                "CHATENV_REDIS_PASSWORD": "openIM123",
+                "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
+                "CHATENV_SHARE_OPENIM_SECRET": "openIM123",
+                "CHATENV_LOG_ISSTDOUT": "true",
+                "CHATENV_LOG_REMAINLOGLEVEL": "6",
+                "CHATENV_CONFIG_FOLDER_PATH": "${workspaceFolder}/config"
+            },
+            "args": [
+                "--config_folder_path",
+                "${workspaceFolder}/config"
+            ]
+        },
+        {
+            "name": "调试 admin-rpc",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/rpc/admin-rpc",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
+                "CHATENV_REDIS_PASSWORD": "openIM123",
+                "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
+                "CHATENV_SHARE_OPENIM_SECRET": "openIM123",
+                "CHATENV_LOG_ISSTDOUT": "true",
+                "CHATENV_LOG_REMAINLOGLEVEL": "6",
+                "CHATENV_CONFIG_FOLDER_PATH": "${workspaceFolder}/config"
+            },
+            "args": [
+                "--config_folder_path",
+                "${workspaceFolder}/config"
+            ]
+        },
+        {
+            "name": "调试 chat-rpc",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/rpc/chat-rpc",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
+                "CHATENV_REDIS_PASSWORD": "openIM123",
+                "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
+                "CHATENV_SHARE_OPENIM_APIURL": "http://127.0.0.1:10002",
+                "CHATENV_SHARE_OPENIM_SECRET": "openIM123",
+                "CHATENV_LOG_ISSTDOUT": "true",
+                "CHATENV_LOG_REMAINLOGLEVEL": "6",
+                "CHATENV_CONFIG_FOLDER_PATH": "${workspaceFolder}/config"
+            },
+            "args": [
+                "--config_folder_path",
+                "${workspaceFolder}/config"
+            ]
+        },
+        {
+            "name": "调试 bot-api",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/api/bot-api",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
+                "CHATENV_REDIS_PASSWORD": "openIM123",
+                "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
+                "CHATENV_SHARE_OPENIM_SECRET": "openIM123",
+                "CHATENV_LOG_ISSTDOUT": "true",
+                "CHATENV_LOG_REMAINLOGLEVEL": "6",
+                "CHATENV_CONFIG_FOLDER_PATH": "${workspaceFolder}/config"
+            },
+            "args": [
+                "--config_folder_path",
+                "${workspaceFolder}/config"
+            ]
+        },
+        {
+            "name": "调试 bot-rpc",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/rpc/bot-rpc",
+            "cwd": "${workspaceFolder}",
+            "env": {
                 "CHATENV_REDIS_ADDRESS": "127.0.0.1:16379",
                 "CHATENV_REDIS_PASSWORD": "openIM123",
                 "CHATENV_DISCOVERY_ETCD_ADDRESS": "127.0.0.1:12379",
@@ -50,10 +133,14 @@
     ],
     "compounds": [
         {
-            "name": "🚀 一键启动 Chat (chat-api + admin-api)",
+            "name": "🚀 启动所有服务",
             "configurations": [
                 "调试 chat-api",
-                "调试 admin-api"
+                "调试 admin-api",
+                "调试 admin-rpc",
+                "调试 chat-rpc",
+                "调试 bot-api",
+                "调试 bot-rpc"
             ],
             "stopAll": true
         }
