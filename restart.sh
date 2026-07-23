@@ -6,9 +6,8 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 LOG_DIR="$SCRIPT_DIR/_output/logs"
 mkdir -p "$LOG_DIR"
-export PATH=$PATH:/home/weirui/go/bin
 
-usage() {
+‘ usage() {
     echo "用法: $0 [start|stop|restart|status|log]"
     echo "  start   - 启动服务"
     echo "  stop    - 停止服务"
